@@ -1,22 +1,45 @@
 body {
-  background-color: rgb(71, 222, 233);
+  background-color: rgb(0, 0, 0);
 }
 
 img {
-  width: 100%;
-  position: fixed;
-  top: 0px;
+  width: 75%;
+  position: relative;
+  top: -5px;
   left: 50%;
   transform: translate(-50%);
 }
-.container {
-  position: relative;
+.txt {
   text-align: center;
-  color: rgb(0, 0, 0);
+  position: relative;
+  top: 50px;
+  color: rgb(255, 255, 255);
+  font-size: 29px;
+
 }
-.About {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.about {
+  text-align: center;
+  position: relative;
+  top: 100px;
+  font-size: 22px;
+}
+a:link {
+  color: rgb(99, 198, 243);
+  background-color: transparent;
+  text-decoration: none;
+}
+a:visited {
+  color: rgb(99, 198, 243);
+  background-color: transparent;
+  text-decoration: none;
+}
+a:hover {
+  color: rgb(0, 117, 172);
+  background-color: transparent;
+  text-decoration: none;
+}
+a:active {
+  color: rgb(99, 198, 243);
+  background-color: transparent;
+  text-decoration: none;
 }
