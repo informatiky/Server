@@ -7,3 +7,23 @@ h1 {
   text-align: center;
   font-size: 150%;
 }
+a:link {
+  color: rgb(99, 198, 243);
+  background-color: transparent;
+  text-decoration: none;
+}
+a:visited {
+  color: rgb(99, 198, 243);
+  background-color: transparent;
+  text-decoration: none;
+}
+a:hover {
+  color: rgb(0, 117, 172);
+  background-color: transparent;
+  text-decoration: none;
+}
+a:active {
+  color: rgb(99, 198, 243);
+  background-color: transparent;
+  text-decoration: none;
+}
