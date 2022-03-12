@@ -56,3 +56,4 @@ document.getElementById("date").innerHTML = w + ", the " + d + " of " + m + " " 
 // });
 
 //document.getElementById("random").innerHTML = lines 
+
