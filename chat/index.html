@@ -1,59 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta content="IE=edge" http-equiv="X-UA-Compatible">
-    <meta content="width=device-width, initial-scale=1" name="viewport">
-    <title>Chat</title>
-    <link href="/images/logo.png" rel="icon" type="image/png"/>
-    <link href="logo.ico" rel="shortcut icon"/>
-    <link href="/images/apple-icon.png" rel="apple-touch-icon-precomposed">
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href="/css/style.css" rel="stylesheet">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./assets/w3.css">
+        <link rel="shortcut icon" href="./assets/favicon.ico" type="image/x-icon">
+        <title>Chat</title>
+    </head>
+    <body>
+        <h1>WebSocket Basics</h1>
+        <ul class="tsummary">
+            <li>allows two-way, event-driven communication between web browser and server</li>
+            <li>great for <strong>real-time</strong> applications</li>
+            <li>after this tutorial you should be able to create a simple Websockets app</li>
+        </ul>
 
-    <!--[if lt IE 9]> <script src="https://cdn.jsdelivr.net/html5shiv/3.7.2/html5shiv.min.js"></script> <script src="https://cdn.jsdelivr.net/respond/1.4.2/respond.min.js"></script> <![endif]-->
-  </head>
-  <body>
-    <div class="vertical-center">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-md-4 col-md-offset-4 well">
-            <h1 class="text-center">
-              Join Chat !</h1>
-            <form action="/Server/chat/chat.html" class="">
+        <pre id="messages" style="width: 90%; margin-left: 5%; height: 200px; overflow: scroll">
+        </pre>
+        <input type="text" id="messageBox" placeholder="Type your message here" 
+            style="display: block; width: 90%; margin-bottom: 10px; margin-left: 5%; padding: 10px;" />
+        <button id="send" title="Send Message!" style="width: 90%; margin-left: 5%; height: 30px;">
+            Send Message
+        </button>
 
-              <div class="form-group">
-                <label for="name">
-                  Display Name :</label>
-                <div class="input-group">
-                  <span class="input-group-addon">
-                    <i class="glyphicon glyphicon-user"></i>
-                  </span>
-                  <input class="form-control" id="name" name="name" placeholder="" type="text">
-                </div>
+        <script>
+            if ("WebSocket" in window) {
+                const sendBtn = document.querySelector('#send');
+                const messages = document.querySelector('#messages');
+                const messageBox = document.querySelector('#messageBox');
+                
+                function showMessage(message) {
+                    messages.textContent += `\n${message}`;
+                    messages.scrollTop = messages.scrollHeight;
+                    messageBox.value = '';
+                }
 
-              </div>
+                let ws = new WebSocket("ws://localhost:8082");
 
-              <div class="form-group">
-                <label for="room">Enter Room :</label>
-                <div class="input-group">
-                  <span class="input-group-addon">
-                    <i class="glyphicon glyphicon-comment"></i>
-                  </span>
-                  <input class="form-control" id="room" name="room" placeholder="" type="text"/>
-                </div>
-              </div>
+                ws.onopen = function() {
+                    console.log("Connected to Server"); 
+                };
 
-              <div class="form-group">
-                <input class="btn btn-primary btn-block" type="submit" value="Join Chat"/>
-              </div>
+                sendBtn.onclick = function() {
+                    if (ws) {
+                        ws.send(messageBox.value);
+                        showMessage(`ME: ${messageBox.value}`);
+                    } else {
+                        alert("ERROR: Not connected... refresh to try again!");
+                    }
+                }
 
-            </form>
+                ws.onmessage = function ({data}) { 
+                    showMessage(`YOU: ${data}`);
+                };
 
-          </div>
-        </div>
-      </div>
-    </div>
-  </body>
+                ws.onclose = function() { 
+                    ws = null;
+                    alert("Connection closed... refresh to try again!"); 
+                };
+
+            } else {
+                alert("WebSocket NOT supported by your Browser!");
+            }
+        </script>
+    </body>
 </html>
