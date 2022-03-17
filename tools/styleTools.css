@@ -1,0 +1,66 @@
+h1 {
+    text-align: center;
+    font-size: 70px;
+    position: relative;
+    top: 30px;
+    font-family: 'Calibri';
+    color: black;
+}
+.ipAdress {
+    text-align: center;
+    width: 600px;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+    top: 100px;
+    border: 20px solid;
+    border-radius: 20px;
+    border-width: 4px;
+    border-color: rgb(0, 153, 255);
+    padding: 20px;
+}
+.ipAdressh  {
+    font-size: 30px;
+}
+.ipAdressp {
+    font-size: 20px;
+}
+.ipAdressb {
+    color: blue;
+  }
+.dropbtn {
+    background-color: #04AA6D;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+}
+  
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+img {
+    width: 70%;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+  
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+  
+.dropdown-content a:hover {background-color: #ddd;}
+  
+.dropdown:hover .dropdown-content {display: block;}
+  
+.dropdown:hover .dropbtn {background-color: #3e8e41;}

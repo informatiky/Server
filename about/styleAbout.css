@@ -1,7 +1,10 @@
 h1 {
-    text-align:center;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 200%;
+  text-align: center;
+  font-size: 70px;
+  position: relative;
+  top: 30px;
+  font-family: 'Calibri';
+  color: black;
 }
     p {
   text-align: center;
